@@ -8,6 +8,7 @@ import os
 
 # try:
 import matplotlib.pyplot as plt
+import cv2
 import detectron2
 from detectron2.engine import DefaultPredictor \
         as detectron2_DefaultPredictor
@@ -64,5 +65,8 @@ class Detectron2:
                 v = v.draw_panoptic_seg_predictions(panoptic_seg.to("cpu"), new_segs)
                 bin_img = panoptic_seg.to("cpu").numpy() == related_id
                 plt.imsave("binary_image.jpg",bin_img)
-        return v.get_image()#np.array( [bin_img for _ in range(3)])
+                cv_img = bin_img.astype(np.uint8)
+                cv_gray = cv2.cvtColor(cv_img, cv2.COLOR_RGB2GRAY)
+        return v.get_image(),cv_gray#np.array( [bin_img for _ in range(3)])
 
+i
