@@ -49,6 +49,14 @@ class Detectron2:
             panoptic_seg, segments_info = outputs["panoptic_seg"]
             print(panoptic_seg)
             print(segments_info)
-            v = v.draw_panoptic_seg_predictions(panoptic_seg.to("cpu"), segments_info)
+            new_segs = []
+            for segments in segments_info:
+                if segments :
+                    if not segments["isthing"]:
+                        if segments["category_id"]==39:
+                            new_segs.append(segments)
+                        
+            if new_segs:
+                v = v.draw_panoptic_seg_predictions(panoptic_seg.to("cpu"), segments_info)
         return v.get_image()
 
