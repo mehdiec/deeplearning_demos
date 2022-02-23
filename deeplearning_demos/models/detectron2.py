@@ -7,6 +7,7 @@ This scripts provides an interface to the detectron2 library
 import os
 
 # try:
+import matplotlib.pyplot as plt
 import detectron2
 from detectron2.engine import DefaultPredictor \
         as detectron2_DefaultPredictor
@@ -50,13 +51,18 @@ class Detectron2:
             print(panoptic_seg)
             print(segments_info)
             new_segs = []
+            related_id=100
             for segments in segments_info:
                 if segments :
                     if not segments["isthing"]:
                         if segments["category_id"]==43:
                             new_segs.append(segments)
+                            related_id=segments["id"]
+                            
                         
             if new_segs:
                 v = v.draw_panoptic_seg_predictions(panoptic_seg.to("cpu"), new_segs)
+                bin_img = panoptic_seg.to("cpu") == related_id
+                plt.imsave("binary_image.jpg",bin_img)
         return v.get_image()
 
