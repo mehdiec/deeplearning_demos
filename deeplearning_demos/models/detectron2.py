@@ -41,6 +41,7 @@ class Detectron2:
         Returns a RGB image in np.uint8
         '''
         outputs = self.predictor(ndimage[:, :, ::-1])
+        print(detectron2_MetaDataCatalog.get(self.cfg.DATASETS.TRAIN[0]))
         v = detectron2_Visualizer(ndimage,
                                   detectron2_MetaDataCatalog.get(self.cfg.DATASETS.TRAIN[0]), scale=1.2)
         if self.output_postprocessing == 'instance':
