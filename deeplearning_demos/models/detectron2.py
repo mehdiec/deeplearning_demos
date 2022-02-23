@@ -57,6 +57,6 @@ class Detectron2:
                             new_segs.append(segments)
                         
             if new_segs:
-                v = v.draw_panoptic_seg_predictions(panoptic_seg.to("cpu"), segments_info)
+                v = v.draw_panoptic_seg_predictions(panoptic_seg.to("cpu"), new_segs)
         return v.get_image()
 
