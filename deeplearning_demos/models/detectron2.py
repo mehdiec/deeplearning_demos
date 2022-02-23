@@ -69,4 +69,3 @@ class Detectron2:
                 cv_gray = cv2.cvtColor(cv_img, cv2.COLOR_RGB2GRAY)
         return v.get_image(),cv_gray#np.array( [bin_img for _ in range(3)])
 
-i
