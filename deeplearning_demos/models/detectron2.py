@@ -48,6 +48,8 @@ class Detectron2:
             v = v.draw_instance_predictions(outputs["instances"].to("cpu"))
         elif self.output_postprocessing == 'panoptic':
             panoptic_seg, segments_info = outputs["panoptic_seg"]
+            print(panoptic_seg)
+            print(segments_info)
             v = v.draw_panoptic_seg_predictions(panoptic_seg.to("cpu"), segments_info)
         return v.get_image()
 
