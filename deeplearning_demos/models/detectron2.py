@@ -9,6 +9,7 @@ import os
 # try:
 import matplotlib.pyplot as plt
 import cv2
+import numpy as np
 import detectron2
 from detectron2.engine import DefaultPredictor \
         as detectron2_DefaultPredictor
