@@ -64,5 +64,5 @@ class Detectron2:
                 v = v.draw_panoptic_seg_predictions(panoptic_seg.to("cpu"), new_segs)
                 bin_img = panoptic_seg.to("cpu") == related_id
                 plt.imsave("binary_image.jpg",bin_img)
-        return v.get_image()
+        return bin_img
 
