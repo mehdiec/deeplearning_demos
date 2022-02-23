@@ -53,7 +53,7 @@ class Detectron2:
             for segments in segments_info:
                 if segments :
                     if not segments["isthing"]:
-                        if segments["category_id"]==39:
+                        if segments["category_id"]==43:
                             new_segs.append(segments)
                         
             if new_segs:
